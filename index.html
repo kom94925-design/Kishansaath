@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KisanConnect | Fresh From Farmers</title>
+
+  <style>
+    :root {
+      --green: #1b5e20;
+      --light: #f3faf1;
+      --orange: #f59e0b;
+      --dark: #203125;
+      --muted: #657166;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--dark);
+      background: var(--light);
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background: var(--green);
+      color: white;
+      padding: 16px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      position: sticky;
+      top: 0;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 700;
+    }
+
+    .logo span {
+      color: #f9c74f;
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .cart-link {
+      background: var(--orange);
+      border-radius: 20px;
+      padding: 9px 14px;
+      font-weight: bold;
+    }
+
+    .hero {
+      min-height: 410px;
+      padding: 65px 8%;
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      background: linear-gradient(90deg, #e2f5dc 50%, transparent 50%);
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .small-title {
+      color: #c57000;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .hero h1 {
+      font-size: 46px;
+      line-height: 1.12;
+      color: var(--green);
+      margin: 10px 0 18px;
+    }
+
+    .hero p {
+      line-height: 1.6;
+      font-size: 18px;
+      max-width: 570px;
+    }
+
+    .hero img {
+      width: 44%;
+      min-height: 280px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px #1b5e2040;
+    }
+
+    .button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--green);
+      color: white;
+      padding: 12px 20px;
+      font-weight: bold;
+      cursor: pointer;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .button.orange {
+      background: var(--orange);
+    }
+
+    .container {
+      width: min(1160px, 90%);
+      margin: auto;
+    }
+
+    .section {
+      padding: 55px 0;
+    }
+
+    .section h2 {
+      color: var(--green);
+      text-align: center;
+      font-size: 30px;
+      margin: 0 0 25px;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      text-align: center;
+      margin: -10px auto 30px;
+      max-width: 620px;
+    }
+
+    .benefits, .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .benefit, .product, .summary-card, .form-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 16px #1b5e201c;
+    }
+
+    .benefit {
+      padding: 24px;
+    }
+
+    .benefit h3, .product h3 {
+      color: var(--green);
+    }
+
+    .benefit p, .farmer {
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .product img {
+      width: 100%;
+      height: 168px;
+      object-fit: cover;
+    }
+
+    .product-body {
+      padding: 18px;
+    }
+
+    .tag {
+      color: var(--green);
+      background: #e3f2df;
+      padding: 5px 9px;
+      border-radius: 15px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .price {
+      color: #d87a00;
+      font-size: 20px;
+      font-weight: bold;
+      margin: 12px 0;
+    }
+
+    .product .button {
+      width: 100%;
+    }
+
+    .marketplace {
+      background: #e8f4e4;
+    }
+
+    .two-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .form-card, .summary-card {
+      padding: 25px;
+    }
+
+    .form-card h3, .summary-card h3 {
+      color: var(--green);
+      margin-top: 0;
+    }
+
+    .form-card label {
+      display: block;
+      margin-top: 13px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .form-card input {
+      width: 100%;
+      padding: 11px;
+      border: 1px solid #b9cbb8;
+      border-radius: 6px;
+      margin-top: 6px;
+      font: inherit;
+    }
+
+    .cart-items {
+      margin: 15px 0;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      border-bottom: 1px solid #e5eee3;
+      padding: 12px 0;
+    }
+
+    .cart-item small {
+      display: block;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .remove {
+      color: #b3261e;
+      cursor: pointer;
+      border: 0;
+      background: none;
+      font-weight: bold;
+    }
+
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      margin: 11px 0;
+    }
+
+    .grand-total {
+      border-top: 2px solid #b8d6b2;
+      padding-top: 14px;
+      font-size: 20px;
+      color: var(--green);
+      font-weight: bold;
+    }
+
+    .empty {
+      color: var(--muted);
+      padding: 15px 0;
+    }
+
+    .notice {
+      display: none;
+      background: #dff2dc;
+      color: #155a1b;
+      padding: 13px;
+      border-radius: 6px;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    footer {
+      background: var(--green);
+      color: white;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .footer-small {
+      color: #dcefd8;
+      font-size: 13px;
+    }
+
+    @media (max-width: 760px) {
+      header, .hero {
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+
+      .hero {
+        display: block;
+        background: #e2f5dc;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .hero img {
+        width: 100%;
+        margin-top: 25px;
+        min-height: 220px;
+      }
+
+      .benefits, .products, .two-columns {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">🌾 Kisan<span>Connect</span></div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#farmer">Farmer</a>
+      <a class="cart-link" href="#summary">
+        Cart (<span id="cartCount">0</span>)
+      </a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero" id="home">
+      <div class="hero-text">
+        <p class="small-title">DIRECT FARM-TO-CUSTOMER MARKETPLACE</p>
+
+        <h1>Fresh food from local farmers.</h1>
+
+        <p>
+          KisanConnect helps farmers sell directly to customers.
+          Farmers get a better price. Customers get fresh products
+          at a fair price.
+        </p>
+
+        <a class="button orange" href="#products">Shop Fresh Products</a>
+      </div>
+
+      <img
+        src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1000&q=80"
+        alt="Fresh vegetables">
+    </section>
+
+    <section class="container section">
+      <h2>Why KisanConnect?</h2>
+
+      <div class="benefits">
+        <article class="benefit">
+          <h3>👨‍🌾 Better Income</h3>
+          <p>Farmers can sell products without many middlemen.</p>
+        </article>
+
+        <article class="benefit">
+          <h3>🛒 Fresh Products</h3>
+          <p>Customers can buy fresh vegetables from local farmers.</p>
+        </article>
+
+        <article class="benefit">
+          <h3>💰 Clear Prices</h3>
+          <p>Everyone can see product price and farmer location.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container section" id="products">
+      <h2>Fresh Products</h2>
+
+      <p class="section-intro">
+        Choose a product and add it to your cart.
+      </p>
+
+      <div class="products" id="productList"></div>
+    </section>
+
+    <section class="marketplace" id="farmer">
+      <div class="container section two-columns">
+
+        <form class="form-card" id="farmerForm">
+          <h3>👨‍🌾 Farmer: Add Your Product</h3>
+
+          <p>Add a product. It will appear in the product list.</p>
+
+          <label>
+            Farmer Name
+            <input id="farmerName" required placeholder="Example: Ramesh Kumar">
+          </label>
+
+          <label>
+            Product Name
+            <input id="productName" required placeholder="Example: Green Peas">
+          </label>
+
+          <label>
+            Price per kg (₹)
+            <input id="productPrice" type="number" min="1" required placeholder="Example: 45">
+          </label>
+
+          <label>
+            Location
+            <input id="productLocation" required placeholder="Example: Patna, Bihar">
+          </label>
+
+          <br>
+          <button class="button" type="submit">Add Product</button>
+        </form>
+
+        <div class="summary-card" id="summary">
+          <h3>🧾 Order Summary</h3>
+
+          <div class="cart-items" id="cartItems"></div>
+
+          <div class="total-row">
+            <span>Subtotal</span>
+            <strong id="subtotal">₹0</strong>
+          </div>
+
+          <div class="total-row">
+            <span>Delivery Fee</span>
+            <strong id="delivery">₹0</strong>
+          </div>
+
+          <div class="total-row grand-total">
+            <span>Total</span>
+            <span id="total">₹0</span>
+          </div>
+
+          <button class="button orange" id="placeOrderButton" onclick="placeOrder()">
+            Place Demo Order
+          </button>
+
+          <div class="notice" id="orderNotice">
+            Order placed successfully! Thank you for supporting local farmers.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <strong>🌾 KisanConnect</strong>
+    <p class="footer-small">
+      Direct Farm-to-Customer Marketplace · Hackathon 2026
+    </p>
+  </footer>
+
+  <script>
+    const defaultProducts = [
+      {
+        id: 1,
+        name: "Fresh Tomato",
+        price: 28,
+        farmer: "Ramesh Kumar",
+        location: "Patna, Bihar",
+        image: "https://images.unsplash.com/photo-1546470427-e26264be0b0b?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        id: 2,
+        name: "Farm Potato",
+        price: 22,
+        farmer: "Sita Devi",
+        location: "Nalanda, Bihar",
+        image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        id: 3,
+        name: "Fresh Onion",
+        price: 30,
+        farmer: "Amit Singh",
+        location: "Vaishali, Bihar",
+        image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80"
+      }
+    ];
+
+    let products = JSON.parse(localStorage.getItem("kisanProducts")) || defaultProducts;
+    let cart = JSON.parse(localStorage.getItem("kisanCart")) || [];
+
+    function saveData() {
+      localStorage.setItem("kisanProducts", JSON.stringify(products));
+      localStorage.setItem("kisanCart", JSON.stringify(cart));
+    }
+
+    function renderProducts() {
+      const productList = document.getElementById("productList");
+
+      productList.innerHTML = products.map(product => `
+        <article class="product">
+          <img src="${product.image}" alt="${product.name}">
+
+          <div class="product-body">
+            <span class="tag">Fresh Produce</span>
+
+            <h3>${product.name}</h3>
+
+            <p class="farmer">Farmer: ${product.farmer}</p>
+            <p class="farmer">Location: ${product.location}</p>
+
+            <p class="price">₹${product.price} / kg</p>
+
+            <button class="button" onclick="addToCart(${product.id})">
+              Add to Cart
+            </button>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function addToCart(productId) {
+      const product = products.find(item => item.id === productId);
+      const item = cart.find(item => item.id === productId);
+
+      if (item) {
+        item.quantity += 1;
+      } else {
+        cart.push({ ...product, quantity: 1 });
+      }
+
+      saveData();
+      renderCart();
+
+      document.getElementById("summary").scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
+    function changeQuantity(productId, change) {
+      const item = cart.find(item => item.id === productId);
+
+      item.quantity += change;
+
+      if (item.quantity <= 0) {
+        cart = cart.filter(item => item.id !== productId);
+      }
+
+      saveData();
+      renderCart();
+    }
+
+    function renderCart() {
+      const cartItems = document.getElementById("cartItems");
+
+      const subtotal = cart.reduce((sum, item) => {
+        return sum + item.price * item.quantity;
+      }, 0);
+
+      const delivery = subtotal === 0 || subtotal >= 500 ? 0 : 40;
+
+      document.getElementById("cartCount").textContent =
+        cart.reduce((sum, item) => sum + item.quantity, 0);
+
+      document.getElementById("subtotal").textContent = "₹" + subtotal;
+
+      document.getElementById("delivery").textContent =
+        delivery === 0 ? "Free" : "₹" + delivery;
+
+      document.getElementById("total").textContent =
+        "₹" + (subtotal + delivery);
+
+      document.getElementById("placeOrderButton").disabled =
+        cart.length === 0;
+
+      if (cart.length === 0) {
+        cartItems.innerHTML =
+          '<p class="empty">Your cart is empty. Add a product first.</p>';
+      } else {
+        cartItems.innerHTML = cart.map(item => `
+          <div class="cart-item">
+            <div>
+              <strong>${item.name}</strong>
+              <small>₹${item.price} × ${item.quantity} kg</small>
+            </div>
+
+            <div>
+              <button class="remove" onclick="changeQuantity(${item.id}, -1)">−</button>
+              ${item.quantity}
+              <button class="remove" onclick="changeQuantity(${item.id}, 1)">+</button>
+            </div>
+          </div>
+        `).join("");
+      }
+    }
+
+    function placeOrder() {
+      if (cart.length === 0) return;
+
+      cart = [];
+      saveData();
+      renderCart();
+
+      document.getElementById("orderNotice").style.display = "block";
+    }
+
+    document.getElementById("farmerForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      products.unshift({
+        id: Date.now(),
+        name: document.getElementById("productName").value,
+        price: Number(document.getElementById("productPrice").value),
+        farmer: document.getElementById("farmerName").value,
+        location: document.getElementById("productLocation").value,
+        image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80"
+      });
+
+      saveData();
+      renderProducts();
+      this.reset();
+
+      document.getElementById("products").scrollIntoView({
+        behavior: "smooth"
+      });
+    });
+
+    renderProducts();
+    renderCart();
+  </script>
+
+</body>
+</html>
